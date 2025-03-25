@@ -7,15 +7,6 @@ class PostBase(BaseModel):
     content: str
     published: bool = True
 
-class PostCreate(PostBase):
-    pass
-
-# Posts
-class Post(PostBase):
-    id: int
-    created_at: datetime
-    class Config:
-        orm_mode = True
 
 # User Registration
 class UserCreate(BaseModel):
@@ -42,3 +33,15 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     id : int
+class PostCreate(PostBase):
+    pass
+
+
+# Posts
+class Post(PostBase):
+    id: int
+    created_at: datetime
+    owner_id: int
+    owner: UserCreateResponse
+    class Config:
+        orm_mode = True
