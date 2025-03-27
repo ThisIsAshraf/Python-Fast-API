@@ -46,6 +46,13 @@ class Post(PostBase):
     owner: UserCreateResponse
     class Config:
         orm_mode = True
+
+class PostResponse(BaseModel):
+    Post: Post
+    votes: int
+    class Config:
+        orm_mode = True
+
 # Votes
 
 class Vote(BaseModel):
